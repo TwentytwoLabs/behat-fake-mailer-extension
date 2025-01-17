@@ -1,0 +1,60 @@
+<?php
+
+declare(strict_types=1);
+
+namespace TwentytwoLabs\BehatFakeMailerExtension\ServiceContainer;
+
+use Behat\Behat\Context\ServiceContainer\ContextExtension;
+use Behat\Testwork\ServiceContainer\Extension as ExtensionInterface;
+use Behat\Testwork\ServiceContainer\ExtensionManager;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Definition;
+use TwentytwoLabs\BehatFakeMailerExtension\Client\MailhogClient;
+use TwentytwoLabs\BehatFakeMailerExtension\Client\MailpitClient;
+use TwentytwoLabs\BehatFakeMailerExtension\Initializer\FakeMailerInitializer;
+
+final class BehatFakeMailerExtension implements ExtensionInterface
+{
+    public function process(ContainerBuilder $container)
+    {
+    }
+
+    public function getConfigKey(): string
+    {
+        return 'fake_mailer_extension';
+    }
+
+    public function initialize(ExtensionManager $extensionManager)
+    {
+    }
+
+    public function configure(ArrayNodeDefinition $builder)
+    {
+        $builder
+            ->children()
+                ->scalarNode('base_url')->defaultValue('http://localhost:8025')->end()
+                ->scalarNode('client')->isRequired()->end()
+            ->end()
+        ;
+    }
+
+    public function load(ContainerBuilder $container, array $config)
+    {
+        $httpClient = new Definition($this->getClient($config['client']), ['$baseUrl' => $config['base_url']]);
+
+        $mailpitInitializer = new Definition(FakeMailerInitializer::class, ['$httpClient' => $httpClient]);
+        $mailpitInitializer->addTag(ContextExtension::INITIALIZER_TAG, ['priority' => 0]);
+
+        $container->setDefinition('fake_mailer.context_initializer', $mailpitInitializer);
+    }
+
+    private function getClient(string $client): string
+    {
+        return match ($client) {
+            'mailhog' => MailhogClient::class,
+            'mailpit' => MailpitClient::class,
+            default => $client,
+        };
+    }
+}
