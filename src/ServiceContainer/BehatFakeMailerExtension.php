@@ -10,8 +10,6 @@ use Behat\Testwork\ServiceContainer\ExtensionManager;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
-use TwentytwoLabs\BehatFakeMailerExtension\Client\MailhogClient;
-//use TwentytwoLabs\BehatFakeMailerExtension\Client\MailpitClient;
 use TwentytwoLabs\BehatFakeMailerExtension\Initializer\FakeMailerInitializer;
 
 final class BehatFakeMailerExtension implements ExtensionInterface
@@ -55,8 +53,8 @@ final class BehatFakeMailerExtension implements ExtensionInterface
     private function getClient(string $client): string
     {
         return match ($client) {
-            'mailhog' => MailhogClient::class,
-//            'mailpit' => MailpitClient::class,
+            'mailhog' => 'TwentytwoLabs\BehatFakeMailerExtension\Client\MailhogClient',
+            'mailpit' => 'TwentytwoLabs\BehatFakeMailerExtension\Client\MailpitClient',
             default => $client,
         };
     }

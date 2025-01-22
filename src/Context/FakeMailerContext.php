@@ -33,6 +33,8 @@ final class FakeMailerContext implements Context
     }
 
     /**
+     * @phpcs:disable
+     *
      * @Then /^I should see (?P<count>[\d]*) email(?:s)?$/
      * @Then /^I should see (?P<count>[\d]*) email(?:s)? from "(?P<from>[^"]*)"$/
      * @Then /^I should see (?P<count>[\d]*) email(?:s)? to "(?P<recipient>[^"]*)"$/
