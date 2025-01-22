@@ -11,7 +11,7 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use TwentytwoLabs\BehatFakeMailerExtension\Client\MailhogClient;
-use TwentytwoLabs\BehatFakeMailerExtension\Client\MailpitClient;
+//use TwentytwoLabs\BehatFakeMailerExtension\Client\MailpitClient;
 use TwentytwoLabs\BehatFakeMailerExtension\Initializer\FakeMailerInitializer;
 
 final class BehatFakeMailerExtension implements ExtensionInterface
@@ -25,11 +25,11 @@ final class BehatFakeMailerExtension implements ExtensionInterface
         return 'fake_mailer_extension';
     }
 
-    public function initialize(ExtensionManager $extensionManager)
+    public function initialize(ExtensionManager $extensionManager): void
     {
     }
 
-    public function configure(ArrayNodeDefinition $builder)
+    public function configure(ArrayNodeDefinition $builder): void
     {
         $builder
             ->children()
@@ -39,7 +39,10 @@ final class BehatFakeMailerExtension implements ExtensionInterface
         ;
     }
 
-    public function load(ContainerBuilder $container, array $config)
+    /**
+     * @param array<string, mixed> $config
+     */
+    public function load(ContainerBuilder $container, array $config): void
     {
         $httpClient = new Definition($this->getClient($config['client']), ['$baseUrl' => $config['base_url']]);
 
@@ -53,7 +56,7 @@ final class BehatFakeMailerExtension implements ExtensionInterface
     {
         return match ($client) {
             'mailhog' => MailhogClient::class,
-            'mailpit' => MailpitClient::class,
+//            'mailpit' => MailpitClient::class,
             default => $client,
         };
     }

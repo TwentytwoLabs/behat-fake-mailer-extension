@@ -11,11 +11,11 @@ use TwentytwoLabs\BehatFakeMailerExtension\Context\FakeMailerContext;
 
 final class FakeMailerInitializer implements ContextInitializer
 {
-    private ClientInterface $httpClient;
+    private ClientInterface $client;
 
-    public function __construct(ClientInterface $httpClient)
+    public function __construct(ClientInterface $client)
     {
-        $this->httpClient = $httpClient;
+        $this->client = $client;
     }
 
     /**
@@ -25,7 +25,7 @@ final class FakeMailerInitializer implements ContextInitializer
     {
         if ($context instanceof FakeMailerContext) {
             $context
-                ->setClient($this->httpClient)
+                ->setClient($this->client)
             ;
         }
     }

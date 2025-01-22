@@ -12,6 +12,11 @@ final class FakeMailerContext implements Context
 {
     private ClientInterface $client;
 
+    public function getClient(): ClientInterface
+    {
+        return $this->client;
+    }
+
     public function setClient(ClientInterface $client): self
     {
         $this->client = $client;
@@ -28,22 +33,22 @@ final class FakeMailerContext implements Context
     }
 
     /**
-     * @Then /^I should see (?P<count>[^"]*) email$/
-     * @Then /^I should see (?P<count>[^"]*) email from "(?P<from>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email to "(?P<recipient>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email with subject "(?P<subject>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email with body "(?P<body>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email from "(?P<from>[^"]*)" to "(?P<recipient>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email from "(?P<from>[^"]*)" with subject "(?P<subject>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email from "(?P<from>[^"]*)" with body "(?P<body>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email to "(?P<recipient>[^"]*)" with subject "(?P<subject>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email to "(?P<recipient>[^"]*)" with body "(?P<body>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email with subject "(?P<subject>[^"]*)" and body "(?P<body>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email from "(?P<from>[^"]*)" to "(?P<recipient>[^"]*)" with subject "(?P<subject>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email from "(?P<from>[^"]*)" to "(?P<recipient>[^"]*)" with body "(?P<body>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email from "(?P<from>[^"]*)" with subject "(?P<subject>[^"]*)" and body "(?P<body>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email to "(?P<recipient>[^"]*)" with subject "(?P<subject>[^"]*)" and body "(?P<body>[^"]*)"$/
-     * @Then /^I should see (?P<count>[^"]*) email from "(?P<from>[^"]*)" to "(?P<recipient>[^"]*)" with subject "(?P<subject>[^"]*)" and body "(?P<body>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)?$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? from "(?P<from>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? to "(?P<recipient>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? with subject "(?P<subject>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? with body "(?P<body>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? from "(?P<from>[^"]*)" to "(?P<recipient>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? from "(?P<from>[^"]*)" with subject "(?P<subject>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? from "(?P<from>[^"]*)" with body "(?P<body>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? to "(?P<recipient>[^"]*)" with subject "(?P<subject>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? to "(?P<recipient>[^"]*)" with body "(?P<body>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? with subject "(?P<subject>[^"]*)" and body "(?P<body>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? from "(?P<from>[^"]*)" to "(?P<recipient>[^"]*)" with subject "(?P<subject>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? from "(?P<from>[^"]*)" to "(?P<recipient>[^"]*)" with body "(?P<body>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? from "(?P<from>[^"]*)" with subject "(?P<subject>[^"]*)" and body "(?P<body>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? to "(?P<recipient>[^"]*)" with subject "(?P<subject>[^"]*)" and body "(?P<body>[^"]*)"$/
+     * @Then /^I should see (?P<count>[\d]*) email(?:s)? from "(?P<from>[^"]*)" to "(?P<recipient>[^"]*)" with subject "(?P<subject>[^"]*)" and body "(?P<body>[^"]*)"$/
      */
     public function iShouldSeeEmailWithSubjectAndBodyFromToRecipient(
         int $count,

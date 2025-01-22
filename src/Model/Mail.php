@@ -41,11 +41,17 @@ final class Mail
         return $this;
     }
 
+    /**
+     * @return Contact[]
+     */
     public function getRecipients(): array
     {
         return $this->recipients;
     }
 
+    /**
+     * @param Contact[] $recipients
+     */
     public function setRecipients(array $recipients): self
     {
         $this->recipients = $recipients;
@@ -53,11 +59,17 @@ final class Mail
         return $this;
     }
 
+    /**
+     * @return Contact[]
+     */
     public function getCcRecipients(): array
     {
         return $this->ccRecipients;
     }
 
+    /**
+     * @param Contact[] $ccRecipients
+     */
     public function setCcRecipients(array $ccRecipients): self
     {
         $this->ccRecipients = $ccRecipients;
@@ -65,11 +77,17 @@ final class Mail
         return $this;
     }
 
+    /**
+     * @return Contact[]
+     */
     public function getBccRecipients(): array
     {
         return $this->bccRecipients;
     }
 
+    /**
+     * @param Contact[] $bccRecipients
+     */
     public function setBccRecipients(array $bccRecipients): self
     {
         $this->bccRecipients = $bccRecipients;

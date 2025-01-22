@@ -18,20 +18,24 @@ final class Contact
     public static function fromString(string $data): self
     {
         $matches = [];
-        if (preg_match('~^(?P<name>.*?)\s+<(?P<email>\S*?)>$~i', $data, $matches)) {
+        if (preg_match('~(?P<name>.*?)\s+<(?P<email>\S*?)>~', $data, $matches)) {
             return new self($matches['email'], stripslashes(trim($matches['name'])));
         }
 
-        return new self($data);
+        return new self(trim($data));
     }
 
     public function equals(Contact $other): bool
     {
-        if (null !== $this->name && null !== $other->name && $this->name !== $other->name) {
+        if ($this->name !== $other->getName()) {
             return false;
         }
 
-        return $this->emailAddress === $other->emailAddress;
+        if ($this->emailAddress !== $other->getEmailAddress()) {
+            return false;
+        }
+
+        return true;
     }
 
     public function getEmailAddress(): string
