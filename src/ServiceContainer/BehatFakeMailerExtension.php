@@ -42,9 +42,9 @@ final class BehatFakeMailerExtension implements ExtensionInterface
      */
     public function load(ContainerBuilder $container, array $config): void
     {
-        $httpClient = new Definition($this->getClient($config['client']), ['$baseUrl' => $config['base_url']]);
+        $client = new Definition($this->getClient($config['client']), ['$baseUrl' => $config['base_url']]);
 
-        $mailpitInitializer = new Definition(FakeMailerInitializer::class, ['$httpClient' => $httpClient]);
+        $mailpitInitializer = new Definition(FakeMailerInitializer::class, ['$client' => $client]);
         $mailpitInitializer->addTag(ContextExtension::INITIALIZER_TAG, ['priority' => 0]);
 
         $container->setDefinition('fake_mailer.context_initializer', $mailpitInitializer);
