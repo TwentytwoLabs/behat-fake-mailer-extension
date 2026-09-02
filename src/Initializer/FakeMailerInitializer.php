@@ -18,9 +18,6 @@ final class FakeMailerInitializer implements ContextInitializer
         $this->client = $client;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function initializeContext(Context $context): void
     {
         if ($context instanceof FakeMailerContext) {

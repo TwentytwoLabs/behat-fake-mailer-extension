@@ -20,7 +20,7 @@ final class SpecificationService
         ?string $from,
         ?string $recipient,
         ?string $subject,
-        ?string $body
+        ?string $body,
     ): array {
         $specifications = [];
 

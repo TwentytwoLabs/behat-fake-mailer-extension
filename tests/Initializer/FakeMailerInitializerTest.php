@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace TwentytwoLabs\BehatFakeMailerExtension\Tests\Initializer;
 
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use TwentytwoLabs\BehatFakeMailerExtension\Client\ClientInterface;
 use TwentytwoLabs\BehatFakeMailerExtension\Context\FakeMailerContext;
 use TwentytwoLabs\BehatFakeMailerExtension\Initializer\FakeMailerInitializer;
 use PHPUnit\Framework\TestCase;
 
+#[AllowMockObjectsWithoutExpectations]
 final class FakeMailerInitializerTest extends TestCase
 {
     public function testShouldInitializeContext(): void

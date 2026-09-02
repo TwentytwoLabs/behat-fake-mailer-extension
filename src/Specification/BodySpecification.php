@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TwentytwoLabs\BehatFakeMailerExtension\Specification;
 
-use TwentytwoLabs\BehatFakeMailerExtension\Model\Contact;
 use TwentytwoLabs\BehatFakeMailerExtension\Model\Mail;
 
 final class BodySpecification implements SpecificationInterface

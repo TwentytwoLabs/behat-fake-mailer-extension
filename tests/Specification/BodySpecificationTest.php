@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace TwentytwoLabs\BehatFakeMailerExtension\Tests\Specification;
 
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use TwentytwoLabs\BehatFakeMailerExtension\Model\Mail;
 use TwentytwoLabs\BehatFakeMailerExtension\Specification\BodySpecification;
 use PHPUnit\Framework\TestCase;
 
+#[AllowMockObjectsWithoutExpectations]
 final class BodySpecificationTest extends TestCase
 {
     public function testShouldValidateSpecification(): void

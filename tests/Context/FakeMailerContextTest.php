@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace TwentytwoLabs\BehatFakeMailerExtension\Tests\Context;
 
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use TwentytwoLabs\BehatFakeMailerExtension\Client\ClientInterface;
 use TwentytwoLabs\BehatFakeMailerExtension\Context\FakeMailerContext;
 use PHPUnit\Framework\TestCase;
 use TwentytwoLabs\BehatFakeMailerExtension\Specification\SpecificationInterface;
 
+#[AllowMockObjectsWithoutExpectations]
 final class FakeMailerContextTest extends TestCase
 {
     public function testShouldPurgeMessages(): void

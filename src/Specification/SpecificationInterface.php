@@ -9,5 +9,6 @@ use TwentytwoLabs\BehatFakeMailerExtension\Model\Mail;
 interface SpecificationInterface
 {
     public function __toString(): string;
+
     public function isSatisfiedBy(Mail $mail): bool;
 }

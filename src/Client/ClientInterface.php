@@ -10,6 +10,7 @@ use TwentytwoLabs\BehatFakeMailerExtension\Specification\SpecificationInterface;
 interface ClientInterface
 {
     public function purgeMessages(): void;
+
     /**
      * @param SpecificationInterface[] $specifications
      *

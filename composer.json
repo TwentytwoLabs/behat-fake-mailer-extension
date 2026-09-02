@@ -20,24 +20,24 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit --stop-on-failure --stop-on-error",
-        "test-coverage": "vendor/bin/phpunit --disallow-test-output --coverage-html=coverage --coverage-xml=coverage/coverage-xml --log-junit=coverage/junit.xml --coverage-text --colors=always --stop-on-failure --stop-on-error && vendor/bin/infection --threads=4 --coverage=coverage --only-covered",
+        "test-coverage": "vendor/bin/phpunit --only-summary-for-coverage-text --coverage-html=coverage --coverage-xml=coverage/coverage-xml --log-junit=coverage/junit.xml --coverage-text --colors=always --stop-on-failure --stop-on-error && vendor/bin/infection --threads=4 --coverage=coverage",
         "cs": "vendor/bin/phpcs --standard=PSR12 src",
         "cs-fixer": "vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run --using-cache=no src",
         "cs-fixer-apply": "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --using-cache=no src",
         "phpstan": "./vendor/bin/phpstan analyse"
     },
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.3",
         "ext-json": "*",
         "behat/behat": "^3.18",
         "symfony/http-client": "^5.0|^6.0|^7.0"
     },
     "require-dev": {
-        "friends-of-behat/mink-browserkit-driver": "^1.6",
-        "friendsofphp/php-cs-fixer": "^3.67",
-        "infection/infection": "^0.29",
-        "phpstan/phpstan": "^2.1",
-        "phpunit/phpunit": "^10.5",
-        "squizlabs/php_codesniffer": "^3.11"
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "infection/infection": "^0.29|^0.35",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^12.0|^13.0",
+        "squizlabs/php_codesniffer": "^3.13",
+        "behat/mink-browserkit-driver": "^2.3"
     }
 }

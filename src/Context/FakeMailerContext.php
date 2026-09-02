@@ -57,7 +57,7 @@ final class FakeMailerContext implements Context
         ?string $from = null,
         ?string $recipient = null,
         ?string $subject = null,
-        ?string $body = null
+        ?string $body = null,
     ): void {
         $specifications = SpecificationService::get($from, $recipient, $subject, $body);
         $messages = $this->client->findMessages($specifications);
@@ -65,15 +65,6 @@ final class FakeMailerContext implements Context
             return;
         }
 
-        throw new \RuntimeException(
-            sprintf(
-                'We found %s messages%s%s%s%s',
-                \count($messages),
-                !empty($from) ? sprintf(' from "%s"', $from) : '',
-                !empty($recipient) ? sprintf(' to "%s"', $recipient) : '',
-                !empty($subject) ? sprintf(' with subject "%s"', $subject) : '',
-                !empty($body) ? sprintf(' with body "%s"', $body) : ''
-            )
-        );
+        throw new \RuntimeException(sprintf('We found %s messages%s%s%s%s', \count($messages), !empty($from) ? sprintf(' from "%s"', $from) : '', !empty($recipient) ? sprintf(' to "%s"', $recipient) : '', !empty($subject) ? sprintf(' with subject "%s"', $subject) : '', !empty($body) ? sprintf(' with body "%s"', $body) : ''));
     }
 }
